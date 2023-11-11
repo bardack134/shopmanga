@@ -1,0 +1,32 @@
+<div class="blog-sb-widget multishopcategories_widget">
+
+    <!-- Título del widget de categorías -->
+    <h3 class="widgettitle">Categories</h3>
+
+    <div class="section-sb-current">
+        <!-- Lista de categorías -->
+        <ul class="section-sb-list">
+
+            <!-- Comienza un bucle para recorrer cada categoría en la variable "categorias" -->
+            {% for categoria in categorias %}
+
+            <li>
+                <!-- Enlace de la categoría, se le pasa al enlace el id para esccger una categoria en especifico -->
+                <a href="{% url 'web:ProductosPorCategoria' categoria.id %}">
+
+                    <!-- Nombre de la categoría -->
+                    <span class="section-sb-label">{{categoria.name}}
+                        <!-- Contador: muestra la cantidad de productos en esta categoría -->
+                        <!-- Utiliza "categoria.producto_set.all.count" para contar todos los productos relacionados con esta categoría -->
+                        <!-- "categoria.producto_set.all" representa todos los productos asociados a esta categoría -->
+                        <!-- "count" cuenta la cantidad de productos -->
+                        <span class="count">{{categoria.producto_set.all.count}}</span>
+                    </span>
+                </a>
+            </li>
+
+            <!-- Finaliza el bucle -->
+            {% endfor %}
+        </ul>
+    </div>
+</div>

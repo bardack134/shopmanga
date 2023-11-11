@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1 class="maincont-ttl">ORDER REGISTRATION</h1>
+    <ul class="b-crumbs">
+        <li><a href="/">Home</a></li>
+        <li>pedido</li>
+    </ul>
+    <form method="post" action="{% url 'pedido:confirmarPedido' %}" class="register">
+    {% csrf_token %}
+    <article class="page-cont">
+        <div class="page-styling">
+            <div class="auth-wrap">
+                <div class="auth-col">
+                    <h2>Personal Information</h2>
+                    <p>
+                        <label for="username">Name<span class="required">*</span></label>
+                        {{frmCliente.name}}
+                    </p>
+                    <p>
+                        <label for="username">Last Name<span class="required">*</span></label>
+                        {{frmCliente.Last_name}}
+                    </p>
+                </div>
+                <div class="auth-col">
+                    <h2>Shipping Information</h2>
+                    <p>
+                        <label for="username">Telephone<span class="required">*</span></label>
+                        {{frmCliente.phone_number}}
+                    </p>
+                    <p>
+                        <label for="username">address<span class="required">*</span></label>
+                        {{frmCliente.address}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="page-cont">
+        <div class="page-styling">
+            <h2>Product Confirmation</h2>
+            <div class="woocommerce prod-litems section-list">
+                {% for key,value in request.session.cart.items %}
+                <article class="prod-li sectls">
+                    <div class="prod-li-inner">
+                        <a href="#" class="prod-li-img">
+                            <img src="{{ value.image }}" alt="">
+                        </a>
+                        <div class="prod-li-cont">
+                            <div class="prod-li-ttl-wrap">
+                                <p>
+                                    <a href="#">value.category</a>
+                                </p>
+                                <h3><a href="product.html">{{ value.name }}</a></h3>
+                            </div>
+                            <div class="prod-li-prices">
+                                <div class="prod-li-price-wrap">
+                                    <p>Precio</p>
+                                    <p class="prod-li-price">${{value.price}}</p>
+                                </div>
+                            </div>
+                            <div class="prod-li-qnt-wrap">
+                                <p class="qnt-wrap prod-li-qnt">
+                                    <a href="#" class="qnt-plus prod-li-plus"><i class="icon ion-arrow-up-b"></i></a>
+                                    <input type="text" value="{{value.quantity}}">
+                                    <a href="#" class="qnt-minus prod-li-minus"><i class="icon ion-arrow-down-b"></i></a>
+                                </p>
+                            </div>
+                            <div class="prod-li-total-wrap">
+                                <p>Total</p>
+                                <p class="prod-li-total">${{value.subtotal}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+        </div>
+        <div class="cart-actions">
+                <div class="cart-collaterals">
+                    <div class="order-total">
+                        <p class="cart-totals-ttl">Total</p>
+                        <p class="cart-totals-val">${{request.session.cartMontoTotal}}</p>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </article>
+    <article class="page-cont">
+        <div class="page-styling">
+            <div class="auth-wrap">
+                <div class="auth-col">
+                    <p class="auth-submit">
+                        <input type="submit" value="Confirm Order">
+                    </p>
+            </div>
+        </div>
+    </article>
+    </form>
+{% endblock %}

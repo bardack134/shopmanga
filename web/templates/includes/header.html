@@ -1,0 +1,48 @@
+{% load static %}
+    <!--header-->
+    <div class="site-header">
+
+        <!-- <p class="h-logo">
+            <a href="/"><img src="{% static 'img/logo.png' %}" alt="Shop"  style="width: 60px; height: 60px;"></a>
+        </p>  -->
+        
+        <p class="h-logo">
+            <a href="/" style="display: flex; align-items: center;">
+                <img src="{% static 'img/logo.png' %}" alt="Shop" style="width: 60px; height: 60px;">
+                
+                <span style="margin-left: 10px; font-size: 19px;">Shop</span>
+
+            </a>
+        </p>
+        
+        <!--
+    No Space
+    --><div class="h-shop">
+        <!-- action representa a donde se va a enviar la inf almacenada en "name" -->
+        <form method="post" action="{% url 'web:BuscarProducto' %}" class="h-search" id="h-search">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Search...">
+            <button type="submit"><i class="ion-search"></i></button>
+        </form>
+        
+
+        
+
+        <ul class="h-shop-links">
+            <li class="h-search-btn" id="h-search-btn"><i class="ion-search"></i></li>
+            
+            <li class="h-shop-icon h-profile">
+                <a href="{% url 'autenticacion:cuentaUsuario' %}" title="My Account">
+                    <i class="ion-android-person"></i>
+                </a>
+                <ul class="h-profile-links">
+                    <li><a href="{% url 'autenticacion:loginUsuario' %}">Login / Registro</a></li>
+                    <li><a href="{% url 'autenticacion:logoutUsuario' %}">Logout</a></li>
+                </ul>
+            </li>
+
+            {% include 'includes/header_carrito.html' %}
+
+
+        </ul>
+    </div></div>

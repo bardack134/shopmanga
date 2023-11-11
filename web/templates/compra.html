@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1 class="maincont-ttl">PEDIDO NRO : {{pedido.order_number}}</h1>
+    <ul class="b-crumbs">
+        <li><a href="/">Home</a></li>
+        <li>Pedido</li>
+    </ul>
+<div class="page-styling">
+    <div class="woocommerce prod-litems section-list">
+
+            <h2>Fecha : {{pedido.registration_date}}</h2>
+            <!-- consulta inversa que se utiliza para obtener todos los objetos de la clase PedidoDetalle relacionados con un objeto específico de la clase Pedido. -->
+            <!-- detalle representa cada objeto individual de la clase PedidoDetalle relacionado con el objeto pedido -->
+           {%for detalle in pedido.pedidodetalle_set.all %}
+            <article class="prod-li sectls">
+                <div class="prod-li-inner">
+                    <a href="#" class="prod-li-img">
+                        <img src="{{detalle.product_name.image.url}}" alt="">
+                    </a>
+                    <div class="prod-li-cont">
+                        <div class="prod-li-ttl-wrap">
+                            <p>
+                                <a href="#">{{detalle.product_name.category}}</a>
+                            </p>
+                            <h3><a href="product.html">{{detalle.product_name.name}}</a></h3>
+                        </div>
+                        <div class="prod-li-prices">
+                            <div class="prod-li-price-wrap">
+                                <p>Precio</p>
+                                <p class="prod-li-price">${{detalle.product_name.price}}</p>
+                            </div>
+                        </div>
+                        <div class="prod-li-qnt-wrap">
+                            <p class="qnt-wrap prod-li-qnt">
+                                <a href="#" class="qnt-plus prod-li-plus"><i class="icon ion-arrow-up-b"></i></a>
+                                <input type="text" value="{{detalle.quantity}}">
+                                <a href="#" class="qnt-minus prod-li-minus"><i class="icon ion-arrow-down-b"></i></a>
+                            </p>
+                        </div>
+                        <div class="prod-li-total-wrap">
+                            <p>Total</p>
+                            <p class="prod-li-total">${{detalle.subtotal}}</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+           {% endfor %}
+    </div>
+    <div class="cart-actions">
+            <div class="cart-collaterals">
+                <!-- El método render en Django se utiliza para convertir un formulario de Django en su representación HTML.  -->
+                <!-- {{ formPaypal.render }} en tu plantilla se traduce a todo el código HTML necesario para mostrar el formulario formPaypal. Esto incluirá las etiquetas <form>, los campos de entrada (<input>), las áreas de texto (<textarea>), los botones y cualquier otra cosa necesaria para que el formulario funcione correctamente en una página web. -->
+                {{form.render}}
+                <div class="order-total">
+                    <p class="cart-totals-ttl">Total</p>
+                    <p class="cart-totals-val">${{pedido.total_price}}</p>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

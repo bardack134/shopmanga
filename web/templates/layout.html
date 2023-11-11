@@ -1,0 +1,68 @@
+{% load static %} <!-- Carga de archivos estáticos usando el motor de plantillas de Django -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Enlaces a fuentes de Google Fonts utilizadas en el sitio -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900%7COpen+Sans:300,300i,400,400i,600,600i,700,700i&amp;subset=cyrillic" rel="stylesheet">
+
+    <!-- Enlaces a hojas de estilo CSS externas para estilos y diseño -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.formstyler.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.mThumbnailScroller.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chosen.css' %}">
+
+    <!-- Enlaces a hojas de estilo CSS personalizadas -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/elements-media.css' %}">
+    
+ 
+    
+
+</head>
+<body>
+<div id="page" class="site">
+
+    <!-- Inclusión de la barra de navegación (navbar) desde un archivo externo -->
+    {% include 'includes/navbar.html' %}
+
+    <!-- Inclusión del encabezado (header) desde un archivo externo -->
+    {% include 'includes/header.html' %}
+
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="cont maincont">
+                    <!-- Bloque de contenido principal, que será reemplazado por las vistas específicas de cada página -->
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </main><!-- #main -->
+        </div><!-- #primary -->
+
+    </div><!-- #content -->
+
+    <!-- Inclusión del pie de página (footer) desde un archivo externo -->
+    {% include 'includes/footer.html' %}
+</div><!-- #page -->
+
+<!-- Enlaces a archivos JavaScript para funcionalidad dinámica del sitio -->
+<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/jquery-plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

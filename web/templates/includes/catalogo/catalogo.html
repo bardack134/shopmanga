@@ -1,0 +1,53 @@
+<!-- Contenedor principal para mostrar productos -->
+<div class="row prod-items prod-items-2">
+    <!-- Comienza un bucle para recorrer cada producto en la variable "productos" -->
+    {% for producto in productos %}
+    <!-- Cada producto se muestra en un artículo -->
+    <article class="cf-sm-6 cf-md-6 cf-lg-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 sectgl-item">
+        <!-- Contenedor de información del producto -->
+        <div class="sectgl prod-i">
+            <!-- Parte superior del producto -->
+            <div class="prod-i-top">
+                <!-- Enlace de la imagen del producto -->
+                <a class="prod-i-img" href="{% url 'web:ProductoDetalle' producto.id %}">
+                    
+                    {% if producto.image %}
+                    <!-- Mostrar la imagen del producto utilizando la URL almacenada en "producto.image.url" -->
+                    <img src="{{producto.image.url}}" alt="">
+
+                    {% else %}
+                    <!-- si no existe la imagen, ponemos una imagen por defecto -->
+                    <img src="https://via.placeholder.com/150" alt="">
+                    {% endif %}
+                </a>
+                <!-- Acciones disponibles para el producto, como agregar al carrito -->
+                <div class="prod-i-actions">
+                    <div class="prod-i-actions-in">
+                        <!-- Botón para agregar el producto al carrito -->
+                        <p class="prod-i-cart">
+                            <a href="{% url 'web:agregarCarrito' producto.id %}" class="hover-label prod-addbtn">
+                                <!-- Ícono de carrito de compra -->
+                                <i class="icon ion-android-cart"></i>
+                                <!-- Texto "Añadir al carrito" -->
+                                <span>add to cart</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Parte inferior del producto con detalles e información -->
+            <div class="prod-i-bot">
+                <!-- Información sobre el precio del producto -->
+                <div class="prod-i-info">
+                    <p class="prod-i-price">${{producto.price}}</p>
+                    <!-- Categoría del producto con enlace -->
+                    <p class="prod-i-categ"><a href="#">{{producto.category}}</a></p>
+                </div>
+                <!-- Título del producto con enlace -->
+                <h3 class="prod-i-ttl"><a href="{% url 'web:ProductoDetalle' producto.id %}">{{producto.name}}</a></h3>
+            </div>
+        </div>
+    </article>
+    <!-- Finaliza el bucle -->
+    {% endfor %}
+</div>
