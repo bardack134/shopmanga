@@ -22,7 +22,7 @@ paypal==1.2.5
 pefile==2023.2.7
 Pillow==10.0.0
 protobuf==3.20.3
-psycopg2==2.9.7
+psycopg2
 pyinstaller==5.10.1
 pyinstaller-hooks-contrib==2023.2
 python-decouple==3.8
@@ -31,7 +31,6 @@ pywin32-ctypes==0.2.0
 requests==2.31.0
 rfc3986==1.5.0
 packaging
-psycopg2==2.9.9
 pydantic==2.5.2
 pydantic_core==2.14.5
 pytz==2023.3.post1
