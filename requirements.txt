@@ -18,7 +18,7 @@ hyperframe==5.2.0
 idna
 mysql-connector-python==8.0.32
 mysqlclient==2.2.0
-paypal==1.2.5
+paypal
 pefile==2023.2.7
 Pillow==10.0.0
 protobuf==3.20.3
