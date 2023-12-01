@@ -18,7 +18,6 @@ hyperframe==5.2.0
 idna
 mysql-connector-python==8.0.32
 mysqlclient==2.2.0
-packaging==23.1
 paypal==1.2.5
 pefile==2023.2.7
 Pillow==10.0.0
@@ -31,7 +30,7 @@ pytz==2023.3
 pywin32-ctypes==0.2.0
 requests==2.31.0
 rfc3986==1.5.0
-packaging==23.2
+packaging
 psycopg2==2.9.9
 pydantic==2.5.2
 pydantic_core==2.14.5
